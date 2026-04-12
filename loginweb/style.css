@@ -11,11 +11,11 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 40px 0; /* Memberi ruang scroll */
 }
 
 .login-container {
@@ -25,8 +25,9 @@ body {
     justify-content: center;
 }
 
+/* Modifikasi login-card untuk menampung lebih banyak data */
 .login-card {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
     width: 100%;
     max-width: 450px;
@@ -34,6 +35,11 @@ body {
     border-radius: 20px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
+}
+
+/* Lebarkan khusus untuk card registrasi */
+.register-card, .success-card {
+    max-width: 600px; 
 }
 
 .login-header {
@@ -65,7 +71,13 @@ body {
     margin-bottom: 8px;
 }
 
-.input-group input {
+/* Menambahkan selektor textarea dan select */
+.input-group input[type="text"],
+.input-group input[type="password"],
+.input-group input[type="email"],
+.input-group input[type="date"],
+.input-group select,
+.input-group textarea {
     width: 100%;
     padding: 14px 16px;
     background: #f9fafb;
@@ -77,10 +89,74 @@ body {
     outline: none;
 }
 
-.input-group input:focus {
+.input-group input[type="file"] {
+    background: transparent;
+    border: none;
+    padding: 5px 0;
+}
+
+.input-group textarea {
+    resize: vertical;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
     border-color: #4f46e5;
     background: #ffffff;
     box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.radio-group input {
+    margin-right: 8px;
+    width: auto;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: flex-start;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.checkbox-group input {
+    margin-right: 10px;
+    margin-top: 3px;
+    width: auto;
+}
+
+/* --- STYLE UNTUK ERROR MESSAGE --- */
+.error-text {
+    color: #ef4444;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+    font-weight: 500;
+}
+
+.general-error {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-size: 13px;
+    font-weight: 500;
 }
 
 .submit-btn {
@@ -118,48 +194,30 @@ body {
     text-decoration: underline;
 }
 
-/* Tablet */
-@media screen and (max-width: 1024px) {
-    .login-card {
-        max-width: 420px;
-        padding: 35px;
-    }
+/* Result Table Style */
+.result-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+.result-table td {
+    padding: 10px;
+    border-bottom: 1px solid #e5e7eb;
+    color: #374151;
+    font-size: 15px;
+}
+.result-table td:first-child {
+    width: 35%;
 }
 
-/* Mobile */
+/* Responsive */
 @media screen and (max-width: 767px) {
-    .login-container {
-        padding: 15px;
-    }
-    .login-card {
+    .register-card, .success-card {
         padding: 30px 20px;
-        border-radius: 16px;
-    }
-
-    .login-header h2 {
-        font-size: 24px;
-    }
-
-    .login-header p {
-        font-size: 13px;
-    }
-
-    .input-group input {
-        padding: 12px 14px;
-        font-size: 14px;
-    }
-
-    /* Microscreen */
-    @media screen and (max-width: 360px) {
-        .form-actions {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 12px;
-        }
-    }
-
-    .submit-btn {
-        padding: 12px;
-        font-size: 15px;
     }
 }
