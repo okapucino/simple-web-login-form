@@ -15,7 +15,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 0; /* Memberi ruang scroll */
+    padding: 40px 0;
 }
 
 .login-container {
@@ -25,7 +25,6 @@ body {
     justify-content: center;
 }
 
-/* Modifikasi login-card untuk menampung lebih banyak data */
 .login-card {
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
@@ -37,7 +36,6 @@ body {
     transition: transform 0.3s ease;
 }
 
-/* Lebarkan khusus untuk card registrasi */
 .register-card, .success-card {
     max-width: 600px; 
 }
@@ -71,7 +69,6 @@ body {
     margin-bottom: 8px;
 }
 
-/* Menambahkan selektor textarea dan select */
 .input-group input[type="text"],
 .input-group input[type="password"],
 .input-group input[type="email"],
@@ -140,7 +137,6 @@ body {
     width: auto;
 }
 
-/* --- STYLE UNTUK ERROR MESSAGE --- */
 .error-text {
     color: #ef4444;
     font-size: 12px;
@@ -194,7 +190,6 @@ body {
     text-decoration: underline;
 }
 
-/* Result Table Style */
 .result-data {
     display: flex;
     flex-direction: column;
@@ -215,7 +210,6 @@ body {
     width: 35%;
 }
 
-/* Responsive */
 @media screen and (max-width: 767px) {
     .register-card, .success-card {
         padding: 30px 20px;
