@@ -260,6 +260,7 @@ simple-web-login-form/
 
 Proyek ini merupakan assignment/tugas akademik.
 
-## 👨‍💻 Autor
+## 👨‍💻 Author
 
 Dibuat untuk keperluan tugas pembelajaran web development.
+Oleh **okapucino** - Oka Putra

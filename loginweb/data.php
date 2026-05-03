@@ -15,7 +15,6 @@ $view_detail = isset($_GET['id']) ? (int)$_GET['id'] : 0;
         <div class="data-card">
             
             <?php if ($view_detail > 0): ?>
-                <!-- HALAMAN DETAIL MAHASISWA -->
                 <?php
                 $stmt = $conn->prepare("SELECT * FROM mahasiswa WHERE id = ?");
                 $stmt->bind_param("i", $view_detail);
@@ -50,7 +49,6 @@ $view_detail = isset($_GET['id']) ? (int)$_GET['id'] : 0;
                 <?php endif; ?>
 
             <?php else: ?>
-                <!-- HALAMAN LIST MAHASISWA -->
                 <div class="login-header" style="text-align: left; display:flex; justify-content: space-between; align-items:center;">
                     <div>
                         <h2>Data Mahasiswa</h2>

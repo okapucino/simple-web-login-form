@@ -258,7 +258,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php endif; ?>
     </div>
 
-    // Script untuk toggle UKT berdasarkan jenis mahasiswa
     <script>
         function toggleUKT() {
             var jenis = document.getElementById("jenis_mahasiswa").value;
