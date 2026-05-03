@@ -1,6 +1,6 @@
 <?php
 // Inisialisasi variabel dan array error
-$nama = $nim = $email = $tgl_lahir = $gender = $alamat = $prodi = "";
+$nama = $nim = $email = $tgl_lahir = $gender = $alamat = $prodi = $jenis_mahasiswa = $ukt = "";
 $errors = [];
 $success = false;
 $uploaded_file_path = "";
@@ -56,6 +56,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors['gender'] = "Pilih salah satu gender.";
     } else {
         $gender = test_input($_POST["gender"]);
+    }
+
+    //Validasi jenis mahasiswa
+    if (empty($_POST["jenis_mahasiswa"])) {
+        $errors['jenis_mahasiswa'] = "Pilih salah satu jenis mahasiswa.";
+    } else {
+        $jenis_mahasiswa = test_input($_POST["jenis_mahasiswa"]);
+    }
+
+    //Validasi Jenis UKT
+    if (empty($_POST["ukt"])) {
+        $errors['ukt'] = "Pilih salah satu jenis UKT.";
+    } else {
+        $ukt = test_input($_POST["ukt"]);
     }
 
     // Validasi Alamat
@@ -160,6 +174,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <tr><td><strong>Tanggal Lahir</strong></td><td>: <?= date('d F Y', strtotime($tgl_lahir)) ?></td></tr>
                         <tr><td><strong>Gender</strong></td><td>: <?= $gender == 'L' ? 'Laki-laki' : 'Perempuan' ?></td></tr>
                         <tr><td><strong>Program Studi</strong></td><td>: <?= $prodi ?></td></tr>
+                        <tr><td><strong>Jenis Mahasiswa</strong></td><td>: <?= $jenis_mahasiswa ?></td></tr>
+                        <tr><td><strong>UKT</strong></td><td>: <?= $ukt ?></td></tr>
                         <tr><td><strong>Alamat</strong></td><td>: <?= nl2br($alamat) ?></td></tr>
                     </table>
                 </div>
@@ -227,6 +243,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
 
                     <div class="input-group">
+                        <label>Jenis Mahasiswa</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="jenis_mahasiswa" value="Reguler" <?= (isset($jenis_mahasiswa) && $jenis_mahasiswa=="Reguler") ? "checked" : "" ?>> Reguler</label>
+                            <label><input type="radio" name="jenis_mahasiswa" value="Beasiswa" <?= (isset($jenis_mahasiswa) && $jenis_mahasiswa=="Beasiswa") ? "checked" : "" ?>> Beasiswa</label>
+                        </div>
+                        <?php if(isset($errors['jenis_mahasiswa'])) echo "<span class='error-text'>".$errors['jenis_mahasiswa']."</span>"; ?>
+                    </div>
+
+                    <div class="input-group">
                         <label for="prodi">Program Studi</label>
                         <select id="prodi" name="prodi">
                             <option value="">-- Pilih Program Studi --</option>
@@ -235,6 +260,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <option value="Ilmu Komputer" <?= ($prodi == "Ilmu Komputer") ? "selected" : "" ?>>Ilmu Komputer</option>
                         </select>
                         <?php if(isset($errors['prodi'])) echo "<span class='error-text'>".$errors['prodi']."</span>"; ?>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="ukt">Jenis UKT</label>
+                        <select id="ukt" name="ukt">
+                            <option value="">-- Pilih Jenis UKT --</option>
+                            <option value="UKT1" <?= ($ukt == "UKT 1") ? "selected" : "" ?>>UKT 1</option>
+                            <option value="UKT2" <?= ($ukt == "UKT 2") ? "selected" : "" ?>>UKT 2</option>
+                            <option value="UKT3" <?= ($ukt == "UKT 3") ? "selected" : "" ?>>UKT 3</option>
+                            <option value="UKT4" <?= ($ukt == "UKT 4") ? "selected" : "" ?>>UKT 4</option>
+                            <option value="UKT5" <?= ($ukt == "UKT 5") ? "selected" : "" ?>>UKT 5</option>
+                        </select>
+                        <?php if(isset($errors['ukt'])) echo "<span class='error-text'>".$errors['ukt']."</span>"; ?>
                     </div>
 
                     <div class="input-group">
